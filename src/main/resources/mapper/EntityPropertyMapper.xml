@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.neo4j.mapper.EntityPropertyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hr.neo4j.entity.EntityProperty">
+    <result column="id" property="id" />
+        <result column="entity_property_name" property="entityPropertyName" />
+        <result column="entity_property_value" property="entityPropertyValue" />
+        <result column="entity_property_order" property="entityPropertyOrder" />
+        <result column="entity_info_id" property="entityInfoId" />
+        <result column="entity_property_desc" property="entityPropertyDesc" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_date" property="createDate" />
+        <result column="create_by" property="createBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, entity_property_name, entity_property_value, entity_property_order, entity_info_id, entity_property_desc, is_delete, create_date, create_by, update_date, update_by
+    </sql>
+
+    <select id="selectPage" resultType="com.hr.neo4j.entity.EntityProperty">
+        select
+           <include refid="Base_Column_List" />
+        from
+           entity_property
+        where
+           flag=1
+        <if test="entityProperty.entityPropertyName != null and entityProperty.entityPropertyName != ''">
+            AND entity_property_name = #{entityProperty.entityPropertyName}
+        </if>
+        <if test="entityProperty.entityPropertyValue != null and entityProperty.entityPropertyValue != ''">
+            AND entity_property_value = #{entityProperty.entityPropertyValue}
+        </if>
+        <if test="entityProperty.entityPropertyOrder != null and entityProperty.entityPropertyOrder != ''">
+            AND entity_property_order = #{entityProperty.entityPropertyOrder}
+        </if>
+        <if test="entityProperty.entityInfoId != null and entityProperty.entityInfoId != ''">
+            AND entity_info_id = #{entityProperty.entityInfoId}
+        </if>
+        <if test="entityProperty.entityPropertyDesc != null and entityProperty.entityPropertyDesc != ''">
+            AND entity_property_desc = #{entityProperty.entityPropertyDesc}
+        </if>
+        <if test="entityProperty.isDelete != null and entityProperty.isDelete != ''">
+            AND is_delete = #{entityProperty.isDelete}
+        </if>
+        <if test="entityProperty.createDate != null and entityProperty.createDate != ''">
+            AND create_date = #{entityProperty.createDate}
+        </if>
+        <if test="entityProperty.createBy != null and entityProperty.createBy != ''">
+            AND create_by = #{entityProperty.createBy}
+        </if>
+        <if test="entityProperty.updateDate != null and entityProperty.updateDate != ''">
+            AND update_date = #{entityProperty.updateDate}
+        </if>
+        <if test="entityProperty.updateBy != null and entityProperty.updateBy != ''">
+            AND update_by = #{entityProperty.updateBy}
+        </if>
+    </select>
+</mapper>

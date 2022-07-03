@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.neo4j.mapper.EntityInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hr.neo4j.entity.EntityInfo">
+    <result column="id" property="id" />
+        <result column="entity_info_name" property="entityInfoName" />
+        <result column="entity_info_label" property="entityInfoLabel" />
+        <result column="entity_type_id" property="entityTypeId" />
+        <result column="entity_info_desc" property="entityInfoDesc" />
+        <result column="entity_info_order" property="entityInfoOrder" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, entity_info_name, entity_info_label, entity_type_id, entity_info_desc, entity_info_order, is_delete, create_time, create_by, update_time, update_by
+    </sql>
+
+    <select id="selectPage" resultType="com.hr.neo4j.entity.EntityInfo">
+        select
+           <include refid="Base_Column_List" />
+        from
+           entity_info
+        where
+           flag=1
+        <if test="entityInfo.entityInfoName != null and entityInfo.entityInfoName != ''">
+            AND entity_info_name = #{entityInfo.entityInfoName}
+        </if>
+        <if test="entityInfo.entityInfoLabel != null and entityInfo.entityInfoLabel != ''">
+            AND entity_info_label = #{entityInfo.entityInfoLabel}
+        </if>
+        <if test="entityInfo.entityTypeId != null and entityInfo.entityTypeId != ''">
+            AND entity_type_id = #{entityInfo.entityTypeId}
+        </if>
+        <if test="entityInfo.entityInfoDesc != null and entityInfo.entityInfoDesc != ''">
+            AND entity_info_desc = #{entityInfo.entityInfoDesc}
+        </if>
+        <if test="entityInfo.entityInfoOrder != null and entityInfo.entityInfoOrder != ''">
+            AND entity_info_order = #{entityInfo.entityInfoOrder}
+        </if>
+        <if test="entityInfo.isDelete != null and entityInfo.isDelete != ''">
+            AND is_delete = #{entityInfo.isDelete}
+        </if>
+        <if test="entityInfo.createTime != null and entityInfo.createTime != ''">
+            AND create_time = #{entityInfo.createTime}
+        </if>
+        <if test="entityInfo.createBy != null and entityInfo.createBy != ''">
+            AND create_by = #{entityInfo.createBy}
+        </if>
+        <if test="entityInfo.updateTime != null and entityInfo.updateTime != ''">
+            AND update_time = #{entityInfo.updateTime}
+        </if>
+        <if test="entityInfo.updateBy != null and entityInfo.updateBy != ''">
+            AND update_by = #{entityInfo.updateBy}
+        </if>
+    </select>
+</mapper>

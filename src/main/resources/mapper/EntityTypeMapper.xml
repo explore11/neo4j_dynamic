@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hr.neo4j.mapper.EntityTypeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hr.neo4j.entity.EntityType">
+        <id column=" id" property=" id" />
+        <result column="type_name" property="typeName" />
+        <result column="type_order" property="typeOrder" />
+        <result column="parent_id" property="parentId" />
+        <result column="type_desc" property="typeDesc" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_date" property="createDate" />
+        <result column="create_by" property="createBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+         id, type_name, type_order, parent_id, type_desc, is_delete, create_date, create_by, update_date, update_by
+    </sql>
+
+    <select id="selectPage" resultType="com.hr.neo4j.entity.EntityType">
+        select
+           <include refid="Base_Column_List" />
+        from
+           entity_type
+        where
+           flag=1
+        <if test="entityType. id != null and entityType. id != ''">
+            AND  id = #{entityType. id}
+        </if>
+        <if test="entityType.typeName != null and entityType.typeName != ''">
+            AND type_name = #{entityType.typeName}
+        </if>
+        <if test="entityType.typeOrder != null and entityType.typeOrder != ''">
+            AND type_order = #{entityType.typeOrder}
+        </if>
+        <if test="entityType.parentId != null and entityType.parentId != ''">
+            AND parent_id = #{entityType.parentId}
+        </if>
+        <if test="entityType.typeDesc != null and entityType.typeDesc != ''">
+            AND type_desc = #{entityType.typeDesc}
+        </if>
+        <if test="entityType.isDelete != null and entityType.isDelete != ''">
+            AND is_delete = #{entityType.isDelete}
+        </if>
+        <if test="entityType.createDate != null and entityType.createDate != ''">
+            AND create_date = #{entityType.createDate}
+        </if>
+        <if test="entityType.createBy != null and entityType.createBy != ''">
+            AND create_by = #{entityType.createBy}
+        </if>
+        <if test="entityType.updateDate != null and entityType.updateDate != ''">
+            AND update_date = #{entityType.updateDate}
+        </if>
+        <if test="entityType.updateBy != null and entityType.updateBy != ''">
+            AND update_by = #{entityType.updateBy}
+        </if>
+    </select>
+</mapper>
