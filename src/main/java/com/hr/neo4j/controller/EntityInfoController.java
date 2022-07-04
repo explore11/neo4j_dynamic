@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * @since 2022-07-03
  */
@@ -15,8 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/neo4j/entity-info")
 public class EntityInfoController {
 
-    @Autowired
+    @Resource
     private IEntityInfoService entityInfoService;
+
+
+
+
 
 
 }

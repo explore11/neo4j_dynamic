@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/neo4j/entity-type")
 public class EntityTypeController {
-    @Autowired
+    @Resource
     private IEntityTypeService entityTypeService;
 
 

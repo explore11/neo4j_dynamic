@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.hr")
-@MapperScan(basePackages = "com.hr.neo4j.mapper")
 public class SpringbootApplication {
 
     public static void main(String[] args) {

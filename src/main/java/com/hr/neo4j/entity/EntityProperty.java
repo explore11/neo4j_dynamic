@@ -1,5 +1,6 @@
 package com.hr.neo4j.entity;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,7 +49,8 @@ public class EntityProperty {
     /**
      * 是否删除 0为false 1为true
      */
-    private Long isDelete;
+    @TableLogic
+    private Integer isDelete;
 
     /**
      * 创建时间
