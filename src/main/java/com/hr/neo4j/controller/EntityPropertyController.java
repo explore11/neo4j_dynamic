@@ -6,17 +6,14 @@ import com.hr.neo4j.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 /**
  * @since 2022-07-03
  */
-@Api(tags = "接口")
+@Api(tags = "entity-property")
 @RestController
 @RequestMapping("/neo4j/entity-property")
 public class EntityPropertyController {
@@ -25,7 +22,7 @@ public class EntityPropertyController {
 
     @GetMapping("/addEntityProperty")
     @ApiOperation(value = "添加entity-property")
-    public Result addEntityProperty(EntityProperty entityProperty) {
+    public Result addEntityProperty(@RequestBody EntityProperty entityProperty) {
         Boolean result = entityPropertyService.addEntityProperty(entityProperty);
         return Result.success(result);
     }
@@ -39,7 +36,7 @@ public class EntityPropertyController {
 
     @GetMapping("/updateEntityProperty")
     @ApiOperation(value = "修改entity-property")
-    public Result updateEntityProperty(EntityProperty entityProperty) {
+    public Result updateEntityProperty(@RequestBody EntityProperty entityProperty) {
         Boolean result = entityPropertyService.updateEntityProperty(entityProperty);
         return Result.success(result);
     }

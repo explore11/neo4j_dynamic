@@ -7,17 +7,14 @@ import com.hr.neo4j.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 /**
  * @since 2022-07-03
  */
-@Api(tags = "接口")
+@Api(tags = "entity-info")
 @RestController
 @RequestMapping("/neo4j/entity-info")
 public class EntityInfoController {
@@ -27,7 +24,7 @@ public class EntityInfoController {
 
     @GetMapping("/addEntityInfo")
     @ApiOperation(value = "添加entity-info")
-    public Result addEntityInfo(EntityInfo entityInfo) {
+    public Result addEntityInfo(@RequestBody EntityInfo entityInfo) {
         Boolean result = entityInfoService.addEntityInfo(entityInfo);
         return Result.success(result);
     }
@@ -41,7 +38,7 @@ public class EntityInfoController {
 
     @GetMapping("/updateEntityInfo")
     @ApiOperation(value = "修改entity-info")
-    public Result updateEntityInfo(EntityInfo entityInfo) {
+    public Result updateEntityInfo(@RequestBody EntityInfo entityInfo) {
         Boolean result = entityInfoService.updateEntityInfo(entityInfo);
         return Result.success(result);
     }
