@@ -1,6 +1,7 @@
 package com.hr.neo4j.controller;
 
 import com.hr.neo4j.utils.Neo4jUtil;
+import com.hr.neo4j.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,7 +66,7 @@ public class TestController {
     }
 
     @GetMapping("add")
-    public void add() {
+    public Result add() {
         //创建单个节点
         //String cql = "create (:Person{name:\"康康\"})";
         //创建多个节点
@@ -73,7 +74,9 @@ public class TestController {
         //根据已有节点创建关系
         //String cql = "match (n:Person{name:\"李雷\"}),(m:Person{name:\"小明\"}) create (n)-[r:friendRelation]->(m)";
         //同时创建节点和关系
-        String cql = "create (:Person{name:'张三'})-[r:friendRelation]->(:Person{name:'王五'})";
-        neo4jUtil.add(cql);
+//        String cql = "create (p:Person{name:'张三'})-[r:friendRelation]->(p2:Person{name:'王五'}) return p,r,p2";
+        String cql = "create (p:Person{name:'张三'}) return p";
+        Map<String, Object> map = neo4jUtil.add(cql);
+        return Result.success(map);
     }
 }

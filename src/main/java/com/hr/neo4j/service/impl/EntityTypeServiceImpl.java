@@ -17,4 +17,23 @@ public class EntityTypeServiceImpl implements IEntityTypeService {
     private EntityTypeMapper entityTypeMapper;
 
 
+    @Override
+    public Boolean addEntityType(EntityType entityType) {
+        return entityTypeMapper.insert(entityType) > 0;
+    }
+
+    @Override
+    public Boolean delEntityType(String entityTypeId) {
+        return entityTypeMapper.deleteById(entityTypeId) > 0;
+    }
+
+    @Override
+    public Boolean updateEntityType(EntityType entityType) {
+        return entityTypeMapper.updateById(entityType) > 0;
+    }
+
+    @Override
+    public EntityType getEntityType(String entityTypeId) {
+        return entityTypeMapper.selectById(entityTypeId);
+    }
 }
