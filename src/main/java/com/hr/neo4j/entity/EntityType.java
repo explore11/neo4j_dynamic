@@ -1,6 +1,7 @@
 package com.hr.neo4j.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.annotations.ApiModel;
@@ -10,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @since 2022-07-03
@@ -26,7 +28,6 @@ public class EntityType {
     /**
      * 主键
      */
-    @TableId(value = " id", type = IdType.ASSIGN_UUID)
     private String id;
 
     /**
@@ -48,6 +49,12 @@ public class EntityType {
      * 类型描述
      */
     private String typeDesc;
+
+    /**
+     * 是否是节点 0为false 1为true
+     */
+    private Integer isNode;
+
 
     /**
      * 是否删除 0为false 1为true
@@ -75,5 +82,9 @@ public class EntityType {
      */
     private String updateBy;
 
+
+
+    @TableField(exist = false)
+    private List<EntityType> children;
 
 }

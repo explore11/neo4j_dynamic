@@ -1,6 +1,7 @@
 package com.hr.neo4j.controller;
 
 import com.hr.neo4j.entity.EntityType;
+import com.hr.neo4j.entity.EntityTypeTree;
 import com.hr.neo4j.service.IEntityTypeService;
 import com.hr.neo4j.utils.Result;
 import io.swagger.annotations.Api;
@@ -8,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @since 2022-07-03
@@ -44,6 +46,13 @@ public class EntityTypeController {
     @ApiOperation(value = "查询entity-Type")
     public Result getEntityType(@PathVariable("entityTypeId") String entityTypeId) {
         EntityType result = entityTypeService.getEntityType(entityTypeId);
+        return Result.success(result);
+    }
+
+    @GetMapping("/getEntityTypeTree")
+    @ApiOperation(value = "查询getEntityTypeTree")
+    public Result getEntityTypeTree() {
+        List<EntityType> result = entityTypeService.getEntityTypeTree();
         return Result.success(result);
     }
 

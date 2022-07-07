@@ -11,9 +11,9 @@ spring:
     suffix: .html # 后缀
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/neo4j
-    data-username: root
-    data-password: root
+    url: jdbc:mysql://localhost:3306/neo4j?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
 
 mybatis-plus:
   #扫描多个模块下的mapper.xml

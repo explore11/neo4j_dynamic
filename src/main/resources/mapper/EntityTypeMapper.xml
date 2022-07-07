@@ -9,6 +9,7 @@
         <result column="type_order" property="typeOrder" />
         <result column="parent_id" property="parentId" />
         <result column="type_desc" property="typeDesc" />
+        <result column="is_node" property="isNode" />
         <result column="is_delete" property="isDelete" />
         <result column="create_date" property="createDate" />
         <result column="create_by" property="createBy" />
@@ -18,7 +19,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-         id, type_name, type_order, parent_id, type_desc, is_delete, create_date, create_by, update_date, update_by
+         id, type_name, type_order, parent_id, type_desc, is_node, is_delete, create_date, create_by, update_date, update_by
     </sql>
 
     <select id="selectPage" resultType="com.hr.neo4j.entity.EntityType">
@@ -42,6 +43,9 @@
         </if>
         <if test="entityType.typeDesc != null and entityType.typeDesc != ''">
             AND type_desc = #{entityType.typeDesc}
+        </if>
+        <if test="entityType.isNode != null and entityType.isNode != ''">
+            AND is_node = #{entityType.isNode}
         </if>
         <if test="entityType.isDelete != null and entityType.isDelete != ''">
             AND is_delete = #{entityType.isDelete}
