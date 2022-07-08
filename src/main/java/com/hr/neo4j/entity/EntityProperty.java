@@ -42,6 +42,11 @@ public class EntityProperty {
     private String entityInfoId;
 
     /**
+     * 实体类型id
+     */
+    private String entityTypeId;
+
+    /**
      * 属性描述
      */
     private String entityPropertyDesc;

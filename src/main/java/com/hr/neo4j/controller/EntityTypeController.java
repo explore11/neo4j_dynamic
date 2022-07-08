@@ -21,6 +21,14 @@ public class EntityTypeController {
     @Resource
     private IEntityTypeService entityTypeService;
 
+    @GetMapping("/addEntityTypeToGraph/{entityTypeId}")
+    @ApiOperation(value = "添加到图关系")
+    public Result addEntityTypeToGraph(@PathVariable("entityTypeId") String entityTypeId) {
+        Boolean result = entityTypeService.addEntityTypeToGraph(entityTypeId);
+        return Result.success(result);
+    }
+
+
     @GetMapping("/addEntityType")
     @ApiOperation(value = "添加entity-Type")
     public Result addEntityType(@RequestBody EntityType entityType) {

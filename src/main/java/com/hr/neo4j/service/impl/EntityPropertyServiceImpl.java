@@ -6,6 +6,7 @@ import com.hr.neo4j.service.IEntityPropertyService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @since 2022-07-03
@@ -16,6 +17,13 @@ public class EntityPropertyServiceImpl implements IEntityPropertyService {
     @Resource
     private EntityPropertyMapper entityPropertyMapper;
 
+
+    @Override
+    public List<EntityProperty> getEntityPropertyByEntityTypeId(String entityTypeId) {
+
+//        entityPropertyMapper.selectList()
+        return null;
+    }
 
     @Override
     public Boolean addEntityProperty(EntityProperty entityProperty) {

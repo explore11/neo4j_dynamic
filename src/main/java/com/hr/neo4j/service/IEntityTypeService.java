@@ -22,4 +22,6 @@ public interface IEntityTypeService {
     List<EntityType> getEntityTypeTree();
 
 
+    Boolean addEntityTypeToGraph(String entityTypeId);
+
 }

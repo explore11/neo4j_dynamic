@@ -1,9 +1,11 @@
 package com.hr.neo4j.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hr.neo4j.entity.EntityProperty;
 import com.hr.neo4j.entity.EntityType;
 import com.hr.neo4j.entity.EntityTypeTree;
 import com.hr.neo4j.mapper.EntityTypeMapper;
+import com.hr.neo4j.service.IEntityPropertyService;
 import com.hr.neo4j.service.IEntityTypeService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -22,6 +24,34 @@ public class EntityTypeServiceImpl implements IEntityTypeService {
     @Resource
     private EntityTypeMapper entityTypeMapper;
 
+    @Resource
+    private IEntityPropertyService iEntityPropertyService;
+
+
+    @Override
+    public Boolean addEntityTypeToGraph(String entityTypeId) {
+        EntityType entityType = entityTypeMapper.selectById(entityTypeId);
+        if (entityType != null) {
+            Integer isNode = entityType.getIsNode();
+            if (isNode == 0) { // 不是节点
+                // 返回提示数据
+            } else { // 是节点
+                //  查询是否具有相关属性
+                List<EntityProperty> propertyList = iEntityPropertyService.getEntityPropertyByEntityTypeId(entityTypeId);
+
+
+                // 拼接cql
+
+            }
+
+        }
+
+
+
+
+
+        return entityTypeMapper.insert(entityType) > 0;
+    }
 
     @Override
     public List<EntityType> getEntityTypeTree() {

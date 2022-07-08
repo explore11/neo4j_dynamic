@@ -9,6 +9,7 @@
         <result column="entity_property_value" property="entityPropertyValue" />
         <result column="entity_property_order" property="entityPropertyOrder" />
         <result column="entity_info_id" property="entityInfoId" />
+        <result column="entity_type_id" property="entityTypeId" />
         <result column="entity_property_desc" property="entityPropertyDesc" />
         <result column="is_delete" property="isDelete" />
         <result column="create_date" property="createDate" />
@@ -19,7 +20,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, entity_property_name, entity_property_value, entity_property_order, entity_info_id, entity_property_desc, is_delete, create_date, create_by, update_date, update_by
+        id, entity_property_name, entity_property_value, entity_property_order, entity_info_id, entity_type_id,entity_property_desc, is_delete, create_date, create_by, update_date, update_by
     </sql>
 
     <select id="selectPage" resultType="com.hr.neo4j.entity.EntityProperty">
@@ -40,6 +41,9 @@
         </if>
         <if test="entityProperty.entityInfoId != null and entityProperty.entityInfoId != ''">
             AND entity_info_id = #{entityProperty.entityInfoId}
+        </if>
+        <if test="entityProperty.entityInfoId != null and entityProperty.entityInfoId != ''">
+            AND entity_type_id = #{entityProperty.entityInfoId}
         </if>
         <if test="entityProperty.entityPropertyDesc != null and entityProperty.entityPropertyDesc != ''">
             AND entity_property_desc = #{entityProperty.entityPropertyDesc}
