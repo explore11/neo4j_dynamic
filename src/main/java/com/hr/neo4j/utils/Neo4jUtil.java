@@ -148,9 +148,8 @@ public class Neo4jUtil {
     public static Map<String, Object> add(String cql) {
         Map<String, Object> map = new HashMap<>();
         //启动事务
-        try {
-            Session session = driver.session();
-            Transaction tx = session.beginTransaction();
+        try (Session session = driver.session();
+             Transaction tx = session.beginTransaction()) {
             StatementResult result = tx.run(cql);
             parseResult(map, result);
             //提交事务
