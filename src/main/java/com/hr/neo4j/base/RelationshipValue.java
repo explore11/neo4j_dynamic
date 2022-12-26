@@ -11,4 +11,5 @@ public class RelationshipValue {
     private Long id;
     private String type;
     private Map<String,Object> properties;
+
 }
